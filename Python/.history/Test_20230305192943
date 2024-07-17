@@ -1,0 +1,11 @@
+
+
+
+colors = {
+    'add': [x+1]
+
+}
+x = 3
+colors['add']
+x=colors['add']
+print(x)

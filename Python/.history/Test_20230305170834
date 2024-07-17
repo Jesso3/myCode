@@ -1,0 +1,5 @@
+string = input('what is your name?: ')
+if string.count('Jesse') > 0 or string.count('jesse') > 0 or string.count('Jesso') > 0 or string.count('jesso') > 0:
+    print('Fuck you Jesse')
+else:
+    print('no its not, run me again and do it properly')

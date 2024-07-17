@@ -1,0 +1,6 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.read()
+list = F.split(',')
+newList = [int(item) for item in list]
+newString = ' Jesses learning to count! '.join(list)
+print(newString)

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>home_page</title>
+    <style>
+        .center-vertically {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .output-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: moveDown 3s linear infinite;
+            animation-delay: 1.5s; /* Adjusted value for better alignment */
+        }
+
+        .output-duplicate {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: moveDown 3s linear infinite;
+            
+        }
+
+        .overlay {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15%;
+            height: 2.5rem; /* Using rem unit instead of fixed pixels */
+            background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity here */
+            z-index: 1;
+        }
+
+        .output-container p,
+        .output-duplicate p {
+            line-height: 1.2; /* Adjust this value as needed for consistent spacing */
+        }
+
+        @keyframes moveDown {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: calc(100vh - 2rem); /* Using rem unit instead of fixed pixels */
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="button">pick name</button>
+    
+    <div id="output" class="output-container"></div>
+    <div id="output2" class="output-duplicate"></div>
+    <div class="overlay"></div>
+
+    <script>
+        var btn = document.getElementById("button");
+        var outputDiv = document.getElementById("output");
+        var outputDuplicateDiv = document.getElementById("output2");
+        var animationRunning = true;
+
+        const students = ["Mr. G", "Hashem", "Darius", "Thomas", "Charlie", "Ben", "Minjune", "Selia", "Diya", "Max", "Jesse", "Jonah", "Simon", "Hendrik"];
+
+        for (var i = 0; i < students.length; i++) {
+            var pTag = document.createElement("p");
+            pTag.textContent = students[i];
+            outputDiv.appendChild(pTag.cloneNode(true));
+            outputDuplicateDiv.appendChild(pTag.cloneNode(true));
+        }
+
+        btn.addEventListener("click", function () {
+            if (animationRunning) {
+                outputDiv.style.animationPlayState = "paused";
+                outputDuplicateDiv.style.animationPlayState = "paused";
+                animationRunning = false;
+            } else {
+                outputDiv.style.animationPlayState = "running";
+                outputDuplicateDiv.style.animationPlayState = "running";
+                animationRunning = true;
+
+                /*alert(students[Math.floor(Math.random() * students.length)]);*/
+            }
+        });
+    </script>
+</body>
+</html>

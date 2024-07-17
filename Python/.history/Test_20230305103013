@@ -1,0 +1,9 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.readlines()
+newList = []
+for item in F:
+    newList.append(item.strip())
+
+intList = [int(item) for item in newList]
+print(intList)
+

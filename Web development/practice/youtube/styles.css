@@ -1,0 +1,90 @@
+
+*{
+    position: relative;
+    padding-right: 12px;
+    overflow-x:hidden;
+    
+}
+
+body{
+  background-color: rgb(83, 83, 83);
+  font-family: Arial, sans-serif;
+  margin-top: 30px;
+  margin-left: 30px;
+  overflow-x: hidden;
+
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#sidebar {
+  height: 100%; 
+  width: 240px; 
+  position: fixed; 
+  z-index: 1;
+  top: 0; 
+  left: 0;
+  background-color: #111;
+  padding-top: 20px;
+}
+
+#sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+div{
+  
+  float: left;
+  margin-bottom: 40px;
+  
+}
+
+
+.thumbnail_canvas,.thumbnail{
+ 
+  width: 18vw;
+  height: 21vh;
+
+}
+
+.thumbnail{
+
+  fill: rgb(150, 150, 150);
+  rx: 10px;
+  ry: 10px;
+  
+}
+
+.thumbnail:hover{
+  fill: rgb(255, 255, 255);
+}
+
+.thumbnail:active{
+  fill: rgb(255, 0,0);
+}
+
+.other_canvas,.other{
+  width: 10vw;
+  height: 5vh;
+
+}
+
+.other{
+  fill: rgb(255, 255, 255);
+  rx: 10px;
+  ry: 10px;
+}
+
+p{
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  margin-top: 0px;
+  
+}

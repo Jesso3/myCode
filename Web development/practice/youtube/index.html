@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+
+  
+</head>
+<body id="body">
+  <div id="sidebar">
+    <a id = "side_button" href="test.html">About</a>
+  </div>
+
+  <div id="main" style="margin-left: 15vw;">
+    <div id="video">
+      <!--<svg class="thumbnail_canvas"><rect class="thumbnail"/></svg>-->
+      <a href="https://www.youtube.com/?bp=wgUCEAE%3D"><img class="thumbnail" src="https://i.ytimg.com/vi/qQk94CjRvIs/hqdefault.jpg?sqp=-oaymwEiCKgBEF5IWvKriqkDFQgBFQAAAAAYASUAAMhCPQCAokN4AQ==&rs=AOn4CLDwn_9iJeilMuhCiPh2ZKn9S2h6sA" alt="thumbnail"></a>
+      <p id="title">title</p>
+    </div>
+    
+
+    <script>
+
+      messages = ["kill yourself", "I want to die", "Die now", "I am become death"]
+
+      const b = document.getElementById('main')
+      const vid = document.getElementById('video')
+
+      const bar = document.getElementById('sidebar')
+      const button = document.getElementById('side_button')
+
+      for (let i = 1; i <= 100; i++) {
+        const clone = vid.cloneNode(true)
+        clone.querySelector('#title').innerText = messages[Math.floor(Math.random()*(messages.length))]
+        b.appendChild(clone)
+        
+        const clone2 = button.cloneNode(true);
+        clone2.innerText = messages[Math.floor(Math.random()*(messages.length))]
+        bar.appendChild(clone2);
+        
+      }
+
+      button.remove()
+      vid.remove()
+
+    </script>
+  </div>
+
+</body>
+
+</html>

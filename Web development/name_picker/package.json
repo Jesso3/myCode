@@ -1,0 +1,22 @@
+{
+  "name": "name_picker",
+  "version": "1.0.0",
+  "description": "i dont know\\",
+  "main": "server.js",
+  "scripts": {
+    "test": "yo",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "yo"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "Jesse",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

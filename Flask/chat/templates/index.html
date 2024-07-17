@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbox App</title>
+</head>
+<body>
+    <h1>Textbox App</h1>
+    <form action="/" method="post">
+        <textarea name="textbox_content" rows="4" cols="50"></textarea><br>
+        <input type="submit" value="Save">
+    </form>
+    <h2>Saved Contents:</h2>
+    <ul>
+        {% for content in contents %}
+            <li>{{ content[0] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

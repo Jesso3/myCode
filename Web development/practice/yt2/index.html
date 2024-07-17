@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="sidebar">
+    <a class="sideText text" target="_blank" href="https://www.w3schools.com">hi</a>
+   
+  
+  </div>
+  <div class="main">
+
+    <div id="video-0" class="video">
+      <a class="video-link" href="" ><img video-id="" src="" class="thumbnail"></img></a>
+      <p class="title text">title</p>
+    </div>
+  </div>
+
+  <iframe style="visibility:hidden" class="video-player" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <button class="stop-button">❌</button>
+
+  <script type="module">
+    import data from "./links.json" assert { type: 'json' }
+    
+    const vid = document.querySelector('.video');
+    const space = document.querySelector('.main')
+    
+    const sidebar = document.querySelector('.sidebar')
+    const sideText = document.querySelector('.sideText')
+
+    for (let i = 0; i < Object.keys(data).length; i++) {
+      const title = data[i.toString()].title
+
+      const clone = vid.cloneNode(true);
+      clone.querySelector('.title').innerText = title
+      clone.querySelector('.thumbnail').src = data[i.toString()].source
+      clone.querySelector('.video-link').href = 'javascript: void(0)'
+      clone.querySelector('.thumbnail').setAttribute('video-id',data[(i).toString()].id)
+      clone.id = `video-${i}`
+      space.appendChild(clone);
+
+      const clone2 = sideText.cloneNode(true);
+      clone2.innerText = title
+      clone2.id = `text-${(i+1)}`
+      clone2.href = data[(i).toString()].ref
+      sidebar.appendChild(clone2);
+    }
+    vid.remove()
+    sideText.remove()
+
+    document.querySelectorAll('.thumbnail').forEach(image => 
+      image.addEventListener('click', e => {
+        const videoId = e.target.getAttribute("video-id");
+        const player = document.querySelector('.video-player')
+        document.querySelector('.main').style.filter = 'blur(10px)'
+        document.querySelector('.stop-button').style.visibility = 'visible'
+        player.style.visibility = 'visible'
+        player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      })
+    )
+
+    document.querySelector('.stop-button').addEventListener('click', e => {
+      const player = document.querySelector('.video-player')
+      document.querySelector('.main').style.filter = ''
+      document.querySelector('.stop-button').style.visibility = 'hidden'
+      player.style.visibility = 'hidden'
+      player.src = ''
+    })
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.read().splitlines()
+newList = []
+for item in F:
+    item.split()
+newList.append(item)
+print(newList)

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-image: url("casino.png");
+      background-size: cover;
+      background-position: center bottom;
+    }
+    
+    .container {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .name {
+      position: absolute;
+      font-size: 2.5vw; 
+      white-space: nowrap;
+      left: 45%;
+      top: 15vh;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      visibility: visible;
+    }
+
+    .name-hidden {
+      visibility: hidden;
+    }
+
+    .winner-text {
+      position: absolute;
+      top: 50vh;
+      left: 47.5%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5vw; 
+      display: none;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 53vh;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20%;
+      height: 20vh;
+      background-color: rgba(0, 0, 0, 0.3); 
+      z-index: 1;
+      visibility: visible;
+    }
+
+    .triangle-left {
+      position: absolute;
+      left: 42.5%;
+      top: 53.4vh;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-top: 1.7vw solid transparent; 
+      border-left: 2.6vw solid #555;
+      border-bottom: 1.7vw solid transparent;
+    }
+
+    .slot-machine {
+      position: absolute;
+      width: 40vw;
+      height: auto; 
+      top: 57vh; 
+      left: 50%; 
+      transform: translate(-50%, -50%);
+      z-index: 1; 
+    }
+
+    .button {
+      background-color: #d10101; 
+      border: none;
+      color: white;
+      padding: 0.93vw; 
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 0.93vw;
+      border-radius: 100%;
+      position: absolute;
+      top: 66vh;
+      left: 45.5%;
+      box-shadow: 0 0.6vw #999;
+      z-index: 2;
+    }
+
+    .button:hover {
+      background-color: #c20000;
+    }
+
+    .button:active {
+      background-color: #c20000;
+      box-shadow: 0 0.4vw #666;
+      transform: translateY(0.4vw); 
+    }
+    .back-rectangle{
+      width: 15vw;
+      height:25vh;
+      background:#cdcdcd;
+      position: absolute;
+      top: 50vh; 
+      left: 49vw;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="back-rectangle" id="back-rectangle"></div>
+  <div class="winner-text" id="winnerText"></div>
+  <div id="overlay" class="overlay"></div>
+  <div id="triangle" class="triangle-left"></div>
+  <button id="stop" class="button">Stop scrolling</button>
+  <button id="reroll" class="button">Reroll</button>
+  <img src="slot machine.png" alt="Slot Machine" class="slot-machine" id="slot">
+  <img src="slot test 2.gif" alt="machine gif"  class="slot-machine" id="gif"/>
+
+  <div class="container">
+    
+    <div class="name">Mr. G</div>
+    <div class="name">Darius</div>
+    <div class="name">Thomas</div>
+    <div class="name">Charlie</div>
+    <div class="name">Ben</div>
+    <div class="name">Minjune</div>
+    <div class="name">Selia</div>
+    <div class="name">Diya</div>
+    <div class="name">Max</div>
+    <div class="name">Jesse</div>
+    <div class="name">Jonah</div>
+    <div class="name">Jonah</div>
+    <div class="name">Hendrik</div>
+    <div class="name">Yao</div>
+  </div>
+
+  <script>
+    const gifPreloader = new Image();
+    gifPreloader.getElementById = 'gif';
+    gif.src = gif.src;
+
+    var slot_gif = document.getElementById('gif');
+    const triangle = document.getElementById('triangle');
+    const overlay = document.getElementById('overlay');
+    const rerollButton = document.getElementById('reroll');
+    const machine = document.getElementById('slot');
+    const rectangle = document.getElementById('back-rectangle');
+
+    const names = document.querySelectorAll('.name');
+    const containerHeight = document.querySelector('.container').offsetHeight;
+    const totalNames = names.length;
+    const spacing = containerHeight / totalNames;
+    const initialPositions = Array.from(names, (_, i) => i * spacing);
+
+    rerollButton.style.display = 'none';
+    slot.style.display = 'none';
+    let scrolling = true; 
+    let scrollSpeed = 100;
+    let slowingDown = false; 
+    let slowdownFactor = 0.985; 
+
+    function updateScroll() {
+      if (scrolling) {
+        if (slowingDown) {
+          
+          scrollSpeed *= slowdownFactor;
+          if (scrollSpeed < 0.1) {
+            scrollSpeed = 0;
+            slowingDown = false;
+            scrolling = false;
+          }
+        }
+
+        for (let i = 0; i < names.length; i++) {
+          initialPositions[i] += scrollSpeed;
+          if (initialPositions[i] >= containerHeight) {
+            initialPositions[i] = initialPositions[i] - containerHeight;
+          }
+          names[i].style.transform = `translateY(${initialPositions[i]}px)`;
+        }
+      }
+
+      requestAnimationFrame(updateScroll);
+    }
+
+    updateScroll();
+
+    const stopButton = document.getElementById('stop');
+    
+
+    stopButton.addEventListener('click', () => {
+  names.forEach((name, i) => {
+    const rect = name.getBoundingClientRect();
+    initialPositions[i] = rect.top;
+  });
+
+  gif.style.display = 'block';
+  gif.src = gif.src;
+  slowingDown = true;
+  stopButton.disabled = true;
+  setTimeout(() => {
+    slowingDown = false;
+    stopButton.disabled = false;
+
+    // Find the name closest to the middle
+    let closestNameIndex = 0;
+    let minDistance = Math.abs(containerHeight / 2.8 - initialPositions[0]);
+    for (let i = 1; i < names.length; i++) {
+      const distance = Math.abs(containerHeight / 2.8 - initialPositions[i]);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestNameIndex = i;
+      }
+    }
+
+    stopButton.style.display = 'none';
+    rerollButton.style.display = 'block';
+    gif.style.display = 'none';
+    rectangle.style.display = 'none';
+    triangle.style.display = 'none';
+    overlay.style.display = 'none';
+   
+    // Show the winner on the screen and hide other names
+    const winnerText = document.getElementById('winnerText');
+    document.getElementById("winnerText").style.visibility = "visible";
+    winnerText.textContent = `The winner is ${names[closestNameIndex].textContent}!`;
+    winnerText.style.display = 'block';
+
+    // Hide non-winning names
+    names.forEach((name, i) => {
+      name.classList.add('name-hidden');
+    });
+  }, 8000);
+  rerollButton.addEventListener('click', () => {
+    document.getElementById("winnerText").style.visibility = "hidden";
+    names.forEach((name, i) => {
+      name.classList.remove('name-hidden');
+    });
+    scrolling = true;
+    scrollSpeed = 100;
+    gif.style.display = 'block';
+    rerollButton.style.display = 'none';
+    rectangle.style.display = 'block';
+    stopButton.style.display = 'block';
+    triangle.style.display = 'block';
+    overlay.style.display = 'block';
+
+  });
+
+  const winnerName = names[closestNameIndex].textContent;
+      
+    });
+  </script>
+</body>
+</html>

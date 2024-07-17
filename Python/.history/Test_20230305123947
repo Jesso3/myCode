@@ -1,0 +1,4 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.read()
+list = F.split(',')
+print(list)

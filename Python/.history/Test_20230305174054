@@ -1,0 +1,4 @@
+dictionary = {}
+dictionary['Messe'] = 15
+dictionary['Messe'] += 1
+print(dictionary['Messe'])

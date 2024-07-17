@@ -1,0 +1,3 @@
+with ('Finn test code.txt', 'r') as file:
+    F = file.read()
+print(F)

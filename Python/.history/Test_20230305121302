@@ -1,0 +1,7 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.readlines()
+newList = []
+for item in F:
+    item.strip()
+    newList.append(item)
+newString = ' '.join(newList)

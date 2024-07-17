@@ -1,0 +1,30 @@
+{"intents":  [
+  {"tag": "greetings",
+  "patterns": ["hello", "hey","hi","good day","yo","wassup","greetings","whats up?"],
+  "responses": ["Hello!","hey","What can i do for you?"]
+  },
+  {"tag": "goodbye",
+    "patterns":["cya","See you later","Goodbye","i am leaving","have a good day","bye","cao","see ya"],
+    "responses": ["sad to see you go :(","Talk to you later","goodbye!"]
+  },
+  {"tag": "age",
+  "patterns": ["how old","how old is jesse","what is your age","how old are you","age?"],
+  "responses": ["my owner Jesse is 15 years old!", "15 years!"]
+  },
+  {"tag": "name",
+  "patterns": ["what is your name","what should i call you","whats your name?","who are you","can you tell me about yourself?"],
+  "responses":["you can call me Neural", "i'm Neural!","I'm Neural, the assistant of Jesse"]
+  },
+  {"tag": "shop",
+  "patterns":["Id like to buy something","what are your products?","what do you recommend?","what are you selling"],
+  "responses":["absolutely nothing","Do i look like i have a business"]
+  },
+  {"tag": "hours",
+  "patterns":["when are you guys open","what are your hours","how long do you sleep","are you a slave"],
+  "responses":["I work 24/7"]
+  },
+  {"tag":"stocks",
+  "patterns":["what stocks do i own?","how are my shares?","what companies am i inventing in?"],
+  "responses":["You don't own any stocks, you're fucking poor"]
+  }
+]}

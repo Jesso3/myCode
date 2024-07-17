@@ -1,0 +1,14 @@
+# dictionary = {}
+# dictionary['Messe'] = 15
+# dictionary['Messe'] += 1
+# print(dictionary['Messe'])
+
+
+colors = {
+    'add': [x+1]
+
+}
+x = 3
+colors['add']
+x=colors['add']
+print(x)

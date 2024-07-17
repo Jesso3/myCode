@@ -1,0 +1,4 @@
+with open('Finn test code.txt', 'r') as file:
+    F = file.read().split()
+newString = ' '.join(F)
+print(newString)

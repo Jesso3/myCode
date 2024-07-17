@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Finder</title>
+</head>
+<body>
+    <h1>YouTube Thumbnail Finder</h1>
+    <input type="text" id="youtubeLink" placeholder="Enter YouTube link">
+    <button onclick="getThumbnail()">Get Thumbnail</button>
+    <div id="thumbnailContainer"></div>
+
+    <script>
+        function getVideoId(url) {
+            const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+            const match = url.match(regex);
+            console.log(match ? match[1] : null)
+            return match ? match[1] : null;
+        }
+
+        function getThumbnail() {
+            const url = document.getElementById('youtubeLink').value;
+            const videoId = getVideoId(url);
+
+            if (videoId) {
+                const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                document.getElementById('thumbnailContainer').innerHTML = `<img src="${thumbnailUrl}" alt="Thumbnail">`;
+            } else {
+                document.getElementById('thumbnailContainer').innerHTML = 'Invalid YouTube link.';
+            }
+        }
+    </script>
+</body>
+</html>
