@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Cat Facts</title>
+</head>
+<body>
+  <script>
+    const link = "https://openlibrary.org/search.json?q=harry+potter"
+
+    const getData = async () => {
+    const res = await fetch(link)
+    const spells = await res.json()
+
+    return spells
+    
+}
+  getData().then(data => console.log(data))
+  </script>
+</body>
+</html>
