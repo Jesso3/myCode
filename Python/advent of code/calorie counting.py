@@ -2,12 +2,12 @@ f = open("Calorie counting input.txt")
 data = f.readlines()
 data = list(map(lambda s: s.strip(), data))
 values = []
-highestValue = 0
+highestVal = 0
 value = 0
 for i in data:
     if i == '':
-        if value > highestValue:
-            highestValue = value
+        if value > highestVal:
+            highestVal = value
         values.append(value)
         value = 0
     else:
