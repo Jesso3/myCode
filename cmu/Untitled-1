@@ -1,0 +1,101 @@
+from cmu_graphics import*
+
+app.background = 'lightBlue'
+
+answer = Group(
+    Rect(305,10,80,25,fill=None,border='black'),
+    Label('answer',345,23,size=20)
+    )
+
+Gallow = Group(
+    Rect(70,40,20,350,fill='saddleBrown',border='black'),
+    Rect(20,380,350,20,fill='saddleBrown',border='black'),
+    Rect(70,30,200,20,fill='saddleBrown',border='black'),
+    Line(200,50,200,110,dashes=True)
+    )
+head=Circle(200,125,20,fill=None,border='black',borderWidth=5)
+body=Line(200,145,200,200,lineWidth=5)
+rLeg=Line(200,200,220,230,lineWidth=5)
+lLeg=Line(200,200,180,230,lineWidth=5)
+rArm=Line(200,155,215,185,lineWidth=5)
+lArm=Line(200,155,185,185,lineWidth=5)
+Person = Group(
+    head,body,lLeg,rLeg,lArm,rArm
+    )
+Person.visible=False
+lines = Group()
+lett = Group()
+letters=0
+word = app.getTextInput('Choose a word')
+for i in word:
+    i.lower()
+for i in range(len(word)):
+    lines.add(Line(95+(310/len(word))*i,350,(310/len(word))*i+95+(310/len(word))-5,350))
+    p=((310/len(word))*i+95+(310/len(word))-5)-(95+(310/len(word))*i)
+    l=(((310/len(word))*i+95+(310/len(word))-5)-(95+(310/len(word))*i))/2
+    lett.add(Label(word[i],95+(310/len(word))*i+l,350-l/1.4,size=l*2,))
+    letters+=1
+
+def show():
+    
+    if head.visible==True and body.visible==True and lLeg.visible==True and rLeg.visible==False and lArm.visible==True and rArm.visible==True:
+        rLeg.visible=True
+        Label('You Lost, the answer was {}'.format(word),200,200,size=800/(25+len(word)))
+    elif head.visible==True and body.visible==True and lLeg.visible==False and rLeg.visible==False and lArm.visible==True and rArm.visible==True:
+        lLeg.visible=True
+    elif head.visible==True and body.visible==True and lLeg.visible==False and rLeg.visible==False and lArm.visible==True and rArm.visible==False:
+        rArm.visible=True
+    elif head.visible==True and body.visible==True and lLeg.visible==False and rLeg.visible==False and lArm.visible==False and rArm.visible==False:
+        lArm.visible=True
+    elif head.visible==True and body.visible==False and lLeg.visible==False and rLeg.visible==False and lArm.visible==False and rArm.visible==False:
+        body.visible=True
+    elif head.visible==False and body.visible==False and lLeg.visible==False and rLeg.visible==False and lArm.visible==False and rArm.visible==False:
+        head.visible=True
+    
+    
+def checkWin():
+    b=True
+    for i in lett:
+        if i.visible==False:
+            b=False
+    if b==True:
+        return True
+        
+lett.visible=False
+for i in range(letters):
+    t=-1
+    if word[i]==' ':
+        for j in lines:
+            t+=1
+            if t == i:
+                j.fill=None
+                
+def onKeyPress(key):
+    b=False
+    for i in lett:
+        if i.value == key:
+            b=True
+            i.visible=True
+    if b==False:    
+        show()
+            
+    if checkWin()==True:
+        Label('You Win',200,200,size=50)
+        app.stop
+            
+def onMousePress(mouseX,mouseY):
+    if answer.hits(mouseX,mouseY)==True:
+        attempt = app.getTextInput('What do you think the answer is')
+        if attempt==word:
+            for i in lett:
+                i.visible=True
+                Label('You Win',200,200,size=50)
+                app.stop
+                
+def onStep():
+    if checkWin()==True:
+        Label('You Win',200,200,size=50)
+        app.stop
+        
+        
+cmu_graphics.run()
