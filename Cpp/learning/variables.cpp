@@ -10,8 +10,7 @@ int main()
   b = 2;
   a++;
   result = a - b;
-
-  cout << result;
+  cout << "a: " << a << " b: " << b << " difference: " << result;
 
   return 0;
 }
