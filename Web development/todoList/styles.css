@@ -1,0 +1,12 @@
+body * {
+  position: relative;
+}
+
+.todolist {
+  position: relative;
+  background-color: red;
+}
+
+.text-submit {
+  padding: 50px;
+}
