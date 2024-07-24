@@ -1,12 +1,47 @@
+body {
+  background-color: lightcyan;
+}
+
 body * {
   position: relative;
 }
 
 .todolist {
   position: relative;
-  background-color: red;
+  width: 50vw;
+  left: 25vw;
+  border-style: solid;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .text-submit {
-  padding: 50px;
+  display: flex;
+  padding-top: 5vh;
+  height: 4vh;
+}
+
+.checkboxes * {
+  padding: 5px;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+}
+
+#text-input {
+  width: 80%;
+}
+
+.submit-button {
+  flex: 1;
+}
+
+.close {
+  width: 2vw;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: hidden;
+}
+
+.close:hover {
+  background-color: rgba(200, 200, 200, 0.3);
 }
