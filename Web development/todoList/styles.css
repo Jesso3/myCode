@@ -7,9 +7,10 @@ body * {
 }
 
 .todolist {
-  position: relative;
   width: 50vw;
   left: 25vw;
+  top: 10vh;
+  background-color: lightcyan;
   border-style: solid;
   border-radius: 20px;
   overflow: hidden;
@@ -20,7 +21,6 @@ body * {
   padding-top: 5vh;
   height: 4vh;
 }
-
 .checkboxes * {
   padding: 5px;
   text-wrap: wrap;
@@ -29,10 +29,21 @@ body * {
 
 #text-input {
   width: 80%;
+  border-radius: 0px;
+  border-width: 0px;
+  border-top-width: 1px;
 }
 
 .submit-button {
   flex: 1;
+  border-radius: 0px;
+  border-width: 0px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.submit-button:hover {
+  background-color: rgb(210, 210, 210);
 }
 
 .close {
@@ -44,4 +55,17 @@ body * {
 
 .close:hover {
   background-color: rgba(200, 200, 200, 0.3);
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 2s forwards;
 }

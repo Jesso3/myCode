@@ -51,6 +51,14 @@
             document.querySelector(".checkboxes").removeChild(newDiv);
           });
 
+          newInput.addEventListener("click", (e) => {
+            newDiv.className = "item fadeOut";
+
+            newDiv.addEventListener("animationend", (e) => {
+              document.querySelector(".checkboxes").removeChild(newDiv);
+            });
+          });
+
           document.getElementById("text-input").value = "";
         }
       });
