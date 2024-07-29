@@ -12,7 +12,7 @@
 
       <div>
         <form class="text-submit">
-          <input id="text-input" />
+          <input id="text-input" autofocus />
           <button class="submit-button" type="submit">submit</button>
         </form>
       </div>
@@ -52,7 +52,7 @@
           });
 
           newInput.addEventListener("click", (e) => {
-            newDiv.className = "item fadeOut";
+            newDiv.className = "fadeOut";
 
             newDiv.addEventListener("animationend", (e) => {
               document.querySelector(".checkboxes").removeChild(newDiv);
