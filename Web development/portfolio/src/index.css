@@ -1,0 +1,19 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 5px;
+  flex: 1;
+}
+
+.item {
+  background-color: red;
+  width: 200px;
+  height: 120px;
+  border-radius: 5%;
+}
+
+#item50 {
+  flex-grow: 1;
+}
