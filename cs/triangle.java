@@ -1,7 +1,7 @@
 public class triangle{
-  public static int height = 10;
+  public static int height = 5;
   public static void main(String[] args){
-    for(int i = 0; i < height; i++){
+    for(int i = 0; i <= height; i++){
       for(int j = 0; j <= height-i; j++){
         System.out.print(' ');
       }
