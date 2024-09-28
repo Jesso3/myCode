@@ -1,24 +1,19 @@
-public class cheat {
-    public static void whileMystery(int x, int y) {
-    int s = 0;
+public class cheat{
+  public static void main(String[] args) {
+            String she = "it";
+                    String it = "her";
+                            String her = "you";
+                                    String you = "she";
 
-    while (x > 0 && 2 * y >= x) {
-        System.out.print(s + " ");
-        y = y - x;
-        x--;
-        s = s + x;
-    }
+                                            saying(you, it, you);
+                                                    saying(it, her, she);
+                                                            saying(she, "you", her);
+                                                                    saying(it, "him", "fred");
+                                                                        }
 
-    System.out.println(s);
-}
-
-    public static void main(String[] args) {
-       whileMystery(-2, -6);	
-whileMystery(2, 3);	
-whileMystery(4, 8);	
-whileMystery(5, 40);	
-whileMystery(10, 31);
-
-
-    }
+      public static void saying(String it, String her, String she) {
+                System.out.println(she + " can't take " + it + " with " + her);
+                    }
+      
+  
 }

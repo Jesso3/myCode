@@ -1,4 +1,4 @@
-with open('/Users/jesse/Desktop/python_code/coding_quest_2024/7.txt','r')as f:
+with open('/Users/jesse/Desktop/myCode/coding_quest_2024/7.txt','r')as f:
    lines = f.readlines()
 
 
