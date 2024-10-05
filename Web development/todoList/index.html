@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="todolist">
+      <div class="checkboxes"></div>
+
+      <div>
+        <form class="text-submit">
+          <input id="text-input" autofocus />
+          <button class="submit-button" type="submit">submit</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      document.querySelector(".text-submit").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let value = document.getElementById("text-input").value;
+
+        if (/\S+/.test(value)) {
+          let newDiv = document.createElement("div");
+          let newInput = document.createElement("input");
+          let newLabel = document.createElement("label");
+          let closeButton = document.createElement("button");
+
+          newInput.type = "checkbox";
+          newInput.id = value;
+          newInput.className = "check";
+
+          newLabel.setAttribute("for", value);
+          newLabel.innerHTML = value;
+
+          closeButton.className = "close";
+          closeButton.innerHTML = "x";
+
+          newDiv.className = "item";
+          newDiv.id = value;
+          newDiv.appendChild(newInput);
+          newDiv.appendChild(newLabel);
+          newDiv.appendChild(closeButton);
+
+          document.querySelector(".checkboxes").appendChild(newDiv);
+
+          closeButton.addEventListener("click", (e) => {
+            document.querySelector(".checkboxes").removeChild(newDiv);
+          });
+
+          newInput.addEventListener("click", (e) => {
+            newDiv.className = "fadeOut";
+
+            newDiv.addEventListener("animationend", (e) => {
+              document.querySelector(".checkboxes").removeChild(newDiv);
+            });
+          });
+
+          document.getElementById("text-input").value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

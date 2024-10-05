@@ -1,0 +1,73 @@
+body {
+  background-color: lightcyan;
+}
+
+body * {
+  position: relative;
+  font-size: 18px;
+  font-family: Georgia, serif;
+}
+
+.todolist {
+  width: 50vw;
+  left: 25vw;
+  top: 10vh;
+  background-color: lightcyan;
+  border-style: solid;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.text-submit {
+  display: flex;
+  padding-top: 5vh;
+  height: 4vh;
+}
+.checkboxes * {
+  padding: 5px;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+}
+
+#text-input {
+  width: 80%;
+  border-radius: 0px;
+  border-width: 0px;
+  border-top-width: 1px;
+}
+
+.submit-button {
+  flex: 1;
+  border-radius: 0px;
+  border-width: 0px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.submit-button:hover {
+  background-color: rgb(210, 210, 210);
+}
+
+.close {
+  width: 2vw;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: hidden;
+}
+
+.close:hover {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 2s forwards;
+}
